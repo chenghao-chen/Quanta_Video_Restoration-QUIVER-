@@ -28,13 +28,8 @@ SPYNET_PATH=""  # QUIVER trains SpyNet from scratch; do not load mismatched VRT 
 mkdir -p logs "$WEIGHTS_DIR" "$PLOT_DIR"
 export PYTHONUNBUFFERED=1
 
-# Activate the QUIVER conda environment
-# Use the conda install that created the quiver env (bypasses module system)
-CONDA_BASE=$(ls -d /home/chen4848/.conda 2>/dev/null || ls -d $HOME/miniconda3 2>/dev/null || ls -d $HOME/anaconda3 2>/dev/null)
-source "$CONDA_BASE/../miniconda3/etc/profile.d/conda.sh" 2>/dev/null || \
-source "$HOME/.conda/../miniconda3/etc/profile.d/conda.sh" 2>/dev/null || \
-source "$(dirname $(dirname $(which python)))/etc/profile.d/conda.sh" 2>/dev/null
-conda activate quiver
+# Activate the QUIVER conda environment by prepending its bin to PATH
+export PATH="/home/chen4848/.conda/envs/quiver/bin:$PATH"
 
 # Install torch if missing (the nightly pinned in QUIVER_environment.yml is no longer hosted)
 python -c "import torch" 2>/dev/null || \
