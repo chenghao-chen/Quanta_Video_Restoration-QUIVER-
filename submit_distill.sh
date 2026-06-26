@@ -29,8 +29,9 @@ mkdir -p logs "$WEIGHTS_DIR" "$PLOT_DIR"
 export PYTHONUNBUFFERED=1
 
 # Activate the QUIVER conda environment
-source "$(conda info --base)/etc/profile.d/conda.sh"
-conda activate quiver
+# Gilbreth uses module system — load conda first
+module load anaconda
+source activate quiver
 
 # Install torch if missing (the nightly pinned in QUIVER_environment.yml is no longer hosted)
 python -c "import torch" 2>/dev/null || \
