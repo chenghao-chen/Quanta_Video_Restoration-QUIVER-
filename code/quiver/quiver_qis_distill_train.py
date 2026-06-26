@@ -27,6 +27,7 @@ python quiver_qis_distill_train.py \
     --lambda_task 1.0
 """
 
+from __future__ import annotations
 import sys
 import os
 import builtins
