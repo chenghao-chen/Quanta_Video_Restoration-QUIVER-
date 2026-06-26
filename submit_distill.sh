@@ -28,10 +28,14 @@ SPYNET_PATH="$REPO_ROOT/spynet_sintel_final-3d2a1287.pth"
 mkdir -p logs "$WEIGHTS_DIR" "$PLOT_DIR"
 export PYTHONUNBUFFERED=1
 
-# Activate the QUIVER conda environment defined in QUIVER_environment.yml
-# The env name in that file is the full path; use the base name "prateek"
+# Activate the QUIVER conda environment
 source "$(conda info --base)/etc/profile.d/conda.sh"
-conda activate prateek
+conda activate quiver
+
+# Install torch if missing (the nightly pinned in QUIVER_environment.yml is no longer hosted)
+python -c "import torch" 2>/dev/null || \
+    pip install torch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 \
+        --index-url https://download.pytorch.org/whl/cu121 --quiet
 
 # ---------------------------------------------------------------------------
 # Student architecture  (reduce n_features / n_blocks to compress)
