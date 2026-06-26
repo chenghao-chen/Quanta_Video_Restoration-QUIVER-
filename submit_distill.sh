@@ -20,7 +20,7 @@ VAL_DATA_DIR="/path/to/val/gt"            # directory of clean validation videos
 TEACHER_WEIGHTS="$REPO_ROOT/weights_teacher/quiver_best.pth"
 WEIGHTS_DIR="$REPO_ROOT/weights_student"
 PLOT_DIR="$REPO_ROOT/plots_student"
-SPYNET_PATH="$REPO_ROOT/spynet_sintel_final-3d2a1287.pth"
+SPYNET_PATH=""  # QUIVER trains SpyNet from scratch; do not load mismatched VRT weights
 
 # ---------------------------------------------------------------------------
 # Environment
