@@ -175,9 +175,18 @@ def feature_distill_loss(
 
     def _l1_pair(s_list, t_list, key):
         loss = torch.tensor(0.0, device=device)
+        is_warp = key.startswith('warp_')
         for s_feat, t_feat in zip(s_list, t_list):
             s_feat = s_feat.to(device)
             t_feat = t_feat.to(device)
+            if is_warp:
+                # alignfuse output: [B, T, H, W, C] → [B*T, C, H, W]
+                if s_feat.dim() == 5:
+                    b, t, h, w, c = s_feat.shape
+                    s_feat = s_feat.reshape(b * t, h, w, c).permute(0, 3, 1, 2).contiguous()
+                if t_feat.dim() == 5:
+                    b, t, h, w, c = t_feat.shape
+                    t_feat = t_feat.reshape(b * t, h, w, c).permute(0, 3, 1, 2).contiguous()
             if adapters is not None:
                 s_feat = adapters.adapt(key, s_feat)
             loss = loss + F.l1_loss(s_feat, t_feat.detach())
