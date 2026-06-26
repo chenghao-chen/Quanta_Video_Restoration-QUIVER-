@@ -29,6 +29,8 @@ python quiver_qis_distill_train.py \
 
 import sys
 import os
+import builtins
+builtins.os = os  # quiver_qis_dataloader.py uses os before importing it
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'common')))
 
 import argparse
