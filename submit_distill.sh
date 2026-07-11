@@ -14,7 +14,7 @@
 # ---------------------------------------------------------------------------
 # Paths — edit these before submitting
 # ---------------------------------------------------------------------------
-REPO_ROOT="$HOME/Quanta_Video_Restoration-QUIVER-"
+REPO_ROOT="/scratch/gilbreth/chen4848/projects/Quanta_Video_Restoration-QUIVER-"
 TRAIN_DATA_DIR="/scratch/gilbreth/chen4848/datasets/i2-2kfps_v1/train"
 VAL_DATA_DIR="/scratch/gilbreth/chen4848/datasets/i2-2kfps_v1/test"
 TEACHER_WEIGHTS="$REPO_ROOT/weights_teacher/quiver_best_p5f5_26PPP.pth"
