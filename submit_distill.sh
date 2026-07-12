@@ -17,9 +17,9 @@
 REPO_ROOT="$HOME/Quanta_Video_Restoration-QUIVER-"
 TRAIN_DATA_DIR="/scratch/gilbreth/chen4848/datasets/i2-2kfps_v1/train"
 VAL_DATA_DIR="/scratch/gilbreth/chen4848/datasets/i2-2kfps_v1/test"
-TEACHER_WEIGHTS="$REPO_ROOT/weights_teacher/quiver_best_p5f5_26PPP.pth"
-WEIGHTS_DIR="$REPO_ROOT/weights_student"
-PLOT_DIR="$REPO_ROOT/plots_student"
+TEACHER_WEIGHTS="$REPO_ROOT/weights_teacher/quiver_best_p5f5_3.25PPP.pth"
+WEIGHTS_DIR="$REPO_ROOT/weights_student_3.25PPP"
+PLOT_DIR="$REPO_ROOT/plots_student_3.25PPP"
 SPYNET_PATH=""  # QUIVER trains SpyNet from scratch; do not load mismatched VRT weights
 
 # ---------------------------------------------------------------------------
